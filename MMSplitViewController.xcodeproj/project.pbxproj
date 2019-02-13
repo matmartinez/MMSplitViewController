@@ -8,24 +8,69 @@
 
 /* Begin PBXBuildFile section */
 		0928765F21F79F38002AAE3E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928765E21F79F38002AAE3E /* AppDelegate.m */; };
-		0928766221F79F38002AAE3E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928766121F79F38002AAE3E /* ViewController.m */; };
-		0928766521F79F38002AAE3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0928766321F79F38002AAE3E /* Main.storyboard */; };
 		0928766721F79F39002AAE3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0928766621F79F39002AAE3E /* Assets.xcassets */; };
 		0928766A21F79F39002AAE3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0928766821F79F39002AAE3E /* LaunchScreen.storyboard */; };
 		0928766D21F79F39002AAE3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928766C21F79F39002AAE3E /* main.m */; };
+		0928767521F79F9A002AAE3E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928767421F79F9A002AAE3E /* MainViewController.m */; };
+		0928767C21F7AC38002AAE3E /* FauxListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928767B21F7AC38002AAE3E /* FauxListViewController.m */; };
+		092DC4602203939D0021F635 /* MMSpringScrollAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */; };
+		09382FDE2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */; };
+		09382FE5221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.m in Sources */ = {isa = PBXBuildFile; fileRef = 09382FE4221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.m */; };
+		09382FEA221369C7000B6508 /* MMSnapHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09382FE8221369C7000B6508 /* MMSnapHeaderView.m */; };
+		09382FEB221369C7000B6508 /* MMSnapFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09382FE9221369C7000B6508 /* MMSnapFooterView.m */; };
+		09382FEE22136A80000B6508 /* MMSnapSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09382FED22136A80000B6508 /* MMSnapSupplementaryView.m */; };
+		09382FF4221467D9000B6508 /* MMSnapBackIndicatorDefault@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FEF221467D8000B6508 /* MMSnapBackIndicatorDefault@3x.png */; };
+		09382FF5221467D9000B6508 /* MMSnapBackIndicatorDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF0221467D8000B6508 /* MMSnapBackIndicatorDefault.png */; };
+		09382FF6221467D9000B6508 /* MMSnapIndicatorRounded@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF1221467D9000B6508 /* MMSnapIndicatorRounded@3x.png */; };
+		09382FF7221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF2221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png */; };
+		09382FF8221467D9000B6508 /* MMSnapIndicatorRounded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF3221467D9000B6508 /* MMSnapIndicatorRounded@2x.png */; };
+		098EF153220092E900BC78F5 /* MMSplitScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF152220092E900BC78F5 /* MMSplitScrollView.m */; };
+		098EF1562200945300BC78F5 /* MMSplitPaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1552200945300BC78F5 /* MMSplitPaneView.m */; };
+		098EF1592200947200BC78F5 /* MMSplitSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */; };
+		098EF15D2200B2F000BC78F5 /* MMInvocationForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF15C2200B2F000BC78F5 /* MMInvocationForwarder.m */; };
+		099F47132214B9B70062046F /* MMSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099F47122214B8F00062046F /* MMSplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0928765A21F79F38002AAE3E /* MMSplitViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMSplitViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0928765D21F79F38002AAE3E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0928765E21F79F38002AAE3E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0928766021F79F38002AAE3E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0928766121F79F38002AAE3E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0928766421F79F38002AAE3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0928766621F79F39002AAE3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0928766921F79F39002AAE3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0928766B21F79F39002AAE3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0928766C21F79F39002AAE3E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0928767321F79F9A002AAE3E /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0928767421F79F9A002AAE3E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0928767A21F7AC38002AAE3E /* FauxListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FauxListViewController.h; sourceTree = "<group>"; };
+		0928767B21F7AC38002AAE3E /* FauxListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FauxListViewController.m; sourceTree = "<group>"; };
+		092DC45E2203939D0021F635 /* MMSpringScrollAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMSpringScrollAnimator.h; path = ../../Classes/Utilities/MMSpringScrollAnimator.h; sourceTree = "<group>"; };
+		092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSpringScrollAnimator.m; path = ../../Classes/Utilities/MMSpringScrollAnimator.m; sourceTree = "<group>"; };
+		09382FD7220C8451000B6508 /* MMSplitHuggingSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitHuggingSupport.h; sourceTree = "<group>"; };
+		09382FDC2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MMSplitViewController+MMViewControllerContainmentCompatibility.h"; path = "../../Classes/Compatibility/MMSplitViewController+MMViewControllerContainmentCompatibility.h"; sourceTree = "<group>"; };
+		09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MMSplitViewController+MMViewControllerContainmentCompatibility.m"; path = "../../Classes/Compatibility/MMSplitViewController+MMViewControllerContainmentCompatibility.m"; sourceTree = "<group>"; };
+		09382FE3221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMSplitViewController+MMSupplementaryBars.h"; sourceTree = "<group>"; };
+		09382FE4221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMSplitViewController+MMSupplementaryBars.m"; sourceTree = "<group>"; };
+		09382FE6221369C7000B6508 /* MMSnapFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSnapFooterView.h; sourceTree = "<group>"; };
+		09382FE7221369C7000B6508 /* MMSnapHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSnapHeaderView.h; sourceTree = "<group>"; };
+		09382FE8221369C7000B6508 /* MMSnapHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSnapHeaderView.m; sourceTree = "<group>"; };
+		09382FE9221369C7000B6508 /* MMSnapFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSnapFooterView.m; sourceTree = "<group>"; };
+		09382FEC22136A80000B6508 /* MMSnapSupplementaryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSnapSupplementaryView.h; sourceTree = "<group>"; };
+		09382FED22136A80000B6508 /* MMSnapSupplementaryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSnapSupplementaryView.m; sourceTree = "<group>"; };
+		09382FEF221467D8000B6508 /* MMSnapBackIndicatorDefault@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapBackIndicatorDefault@3x.png"; sourceTree = "<group>"; };
+		09382FF0221467D8000B6508 /* MMSnapBackIndicatorDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MMSnapBackIndicatorDefault.png; sourceTree = "<group>"; };
+		09382FF1221467D9000B6508 /* MMSnapIndicatorRounded@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapIndicatorRounded@3x.png"; sourceTree = "<group>"; };
+		09382FF2221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapBackIndicatorDefault@2x.png"; sourceTree = "<group>"; };
+		09382FF3221467D9000B6508 /* MMSnapIndicatorRounded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapIndicatorRounded@2x.png"; sourceTree = "<group>"; };
+		098EF151220092E900BC78F5 /* MMSplitScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitScrollView.h; sourceTree = "<group>"; };
+		098EF152220092E900BC78F5 /* MMSplitScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitScrollView.m; sourceTree = "<group>"; };
+		098EF1542200945300BC78F5 /* MMSplitPaneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitPaneView.h; sourceTree = "<group>"; };
+		098EF1552200945300BC78F5 /* MMSplitPaneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitPaneView.m; sourceTree = "<group>"; };
+		098EF1572200947200BC78F5 /* MMSplitSeparatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitSeparatorView.h; sourceTree = "<group>"; };
+		098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitSeparatorView.m; sourceTree = "<group>"; };
+		098EF15B2200B2F000BC78F5 /* MMInvocationForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MMInvocationForwarder.h; path = ../../Classes/Utilities/MMInvocationForwarder.h; sourceTree = "<group>"; };
+		098EF15C2200B2F000BC78F5 /* MMInvocationForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MMInvocationForwarder.m; path = ../../Classes/Utilities/MMInvocationForwarder.m; sourceTree = "<group>"; };
+		099F47112214B8F00062046F /* MMSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MMSplitViewController.h; path = Classes/Core/MMSplitViewController.h; sourceTree = "<group>"; };
+		099F47122214B8F00062046F /* MMSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MMSplitViewController.m; path = Classes/Core/MMSplitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +87,8 @@
 		0928765121F79F38002AAE3E = {
 			isa = PBXGroup;
 			children = (
-				0928765C21F79F38002AAE3E /* MMSplitViewController */,
+				099F47102214B8E70062046F /* MMSplitViewController */,
+				0928765C21F79F38002AAE3E /* MMSplitViewControllerDemo */,
 				0928765B21F79F38002AAE3E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,20 +101,100 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0928765C21F79F38002AAE3E /* MMSplitViewController */ = {
+		0928765C21F79F38002AAE3E /* MMSplitViewControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
 				0928765D21F79F38002AAE3E /* AppDelegate.h */,
 				0928765E21F79F38002AAE3E /* AppDelegate.m */,
-				0928766021F79F38002AAE3E /* ViewController.h */,
-				0928766121F79F38002AAE3E /* ViewController.m */,
-				0928766321F79F38002AAE3E /* Main.storyboard */,
+				0928767321F79F9A002AAE3E /* MainViewController.h */,
+				0928767421F79F9A002AAE3E /* MainViewController.m */,
+				0928767A21F7AC38002AAE3E /* FauxListViewController.h */,
+				0928767B21F7AC38002AAE3E /* FauxListViewController.m */,
 				0928766621F79F39002AAE3E /* Assets.xcassets */,
 				0928766821F79F39002AAE3E /* LaunchScreen.storyboard */,
 				0928766B21F79F39002AAE3E /* Info.plist */,
 				0928766C21F79F39002AAE3E /* main.m */,
 			);
-			path = MMSplitViewController;
+			path = MMSplitViewControllerDemo;
+			sourceTree = "<group>";
+		};
+		09382FD822122926000B6508 /* Compatibility */ = {
+			isa = PBXGroup;
+			children = (
+				09382FDC2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.h */,
+				09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */,
+			);
+			name = Compatibility;
+			path = Classes/Compatibility;
+			sourceTree = "<group>";
+		};
+		09382FDF221367E6000B6508 /* Supplementary bars */ = {
+			isa = PBXGroup;
+			children = (
+				09382FE3221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.h */,
+				09382FE4221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.m */,
+				09382FEC22136A80000B6508 /* MMSnapSupplementaryView.h */,
+				09382FED22136A80000B6508 /* MMSnapSupplementaryView.m */,
+				09382FE7221369C7000B6508 /* MMSnapHeaderView.h */,
+				09382FE8221369C7000B6508 /* MMSnapHeaderView.m */,
+				09382FE6221369C7000B6508 /* MMSnapFooterView.h */,
+				09382FE9221369C7000B6508 /* MMSnapFooterView.m */,
+			);
+			name = "Supplementary bars";
+			path = "Classes/Supplementary bars";
+			sourceTree = "<group>";
+		};
+		09382FF9221467DE000B6508 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				09382FF0221467D8000B6508 /* MMSnapBackIndicatorDefault.png */,
+				09382FF2221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png */,
+				09382FEF221467D8000B6508 /* MMSnapBackIndicatorDefault@3x.png */,
+				09382FF3221467D9000B6508 /* MMSnapIndicatorRounded@2x.png */,
+				09382FF1221467D9000B6508 /* MMSnapIndicatorRounded@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		09382FFA2214A3A6000B6508 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				098EF151220092E900BC78F5 /* MMSplitScrollView.h */,
+				098EF152220092E900BC78F5 /* MMSplitScrollView.m */,
+				098EF1542200945300BC78F5 /* MMSplitPaneView.h */,
+				098EF1552200945300BC78F5 /* MMSplitPaneView.m */,
+				09382FD7220C8451000B6508 /* MMSplitHuggingSupport.h */,
+				098EF1572200947200BC78F5 /* MMSplitSeparatorView.h */,
+				098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */,
+			);
+			name = Views;
+			path = Classes/Views;
+			sourceTree = "<group>";
+		};
+		098EF15A2200B2DD00BC78F5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				098EF15B2200B2F000BC78F5 /* MMInvocationForwarder.h */,
+				098EF15C2200B2F000BC78F5 /* MMInvocationForwarder.m */,
+				092DC45E2203939D0021F635 /* MMSpringScrollAnimator.h */,
+				092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */,
+			);
+			name = Utilities;
+			path = Classes/Utilities;
+			sourceTree = "<group>";
+		};
+		099F47102214B8E70062046F /* MMSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				099F47112214B8F00062046F /* MMSplitViewController.h */,
+				099F47122214B8F00062046F /* MMSplitViewController.m */,
+				09382FFA2214A3A6000B6508 /* Views */,
+				09382FDF221367E6000B6508 /* Supplementary bars */,
+				09382FD822122926000B6508 /* Compatibility */,
+				098EF15A2200B2DD00BC78F5 /* Utilities */,
+				09382FF9221467DE000B6508 /* Images */,
+			);
+			name = MMSplitViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +254,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09382FF8221467D9000B6508 /* MMSnapIndicatorRounded@2x.png in Resources */,
+				09382FF5221467D9000B6508 /* MMSnapBackIndicatorDefault.png in Resources */,
+				09382FF4221467D9000B6508 /* MMSnapBackIndicatorDefault@3x.png in Resources */,
 				0928766A21F79F39002AAE3E /* LaunchScreen.storyboard in Resources */,
+				09382FF7221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png in Resources */,
+				09382FF6221467D9000B6508 /* MMSnapIndicatorRounded@3x.png in Resources */,
 				0928766721F79F39002AAE3E /* Assets.xcassets in Resources */,
-				0928766521F79F38002AAE3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,23 +271,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0928766221F79F38002AAE3E /* ViewController.m in Sources */,
 				0928766D21F79F39002AAE3E /* main.m in Sources */,
+				098EF1562200945300BC78F5 /* MMSplitPaneView.m in Sources */,
+				09382FEA221369C7000B6508 /* MMSnapHeaderView.m in Sources */,
+				09382FEB221369C7000B6508 /* MMSnapFooterView.m in Sources */,
+				09382FEE22136A80000B6508 /* MMSnapSupplementaryView.m in Sources */,
+				09382FDE2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m in Sources */,
+				092DC4602203939D0021F635 /* MMSpringScrollAnimator.m in Sources */,
 				0928765F21F79F38002AAE3E /* AppDelegate.m in Sources */,
+				098EF1592200947200BC78F5 /* MMSplitSeparatorView.m in Sources */,
+				099F47132214B9B70062046F /* MMSplitViewController.m in Sources */,
+				098EF15D2200B2F000BC78F5 /* MMInvocationForwarder.m in Sources */,
+				0928767521F79F9A002AAE3E /* MainViewController.m in Sources */,
+				098EF153220092E900BC78F5 /* MMSplitScrollView.m in Sources */,
+				0928767C21F7AC38002AAE3E /* FauxListViewController.m in Sources */,
+				09382FE5221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0928766321F79F38002AAE3E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0928766421F79F38002AAE3E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0928766821F79F39002AAE3E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,13 +420,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8YJY27CA63;
-				INFOPLIST_FILE = MMSplitViewController/Info.plist;
+				DEVELOPMENT_TEAM = 8F4M6APQ4F;
+				INFOPLIST_FILE = "$(SRCROOT)/MMSplitViewControllerDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ma.matias.MMSplitViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = io.cornershop.MMSplitViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -303,13 +437,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8YJY27CA63;
-				INFOPLIST_FILE = MMSplitViewController/Info.plist;
+				DEVELOPMENT_TEAM = 8F4M6APQ4F;
+				INFOPLIST_FILE = "$(SRCROOT)/MMSplitViewControllerDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ma.matias.MMSplitViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = io.cornershop.MMSplitViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
