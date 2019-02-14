@@ -93,6 +93,9 @@ typedef NS_ENUM(NSUInteger, MMViewControllerDisplayMode){
 // An animatable property that can be used to adjust the minimum absolute width of the secondary view controller in the split view controller.
 @property (nonatomic, assign) CGFloat minimumSecondaryColumnWidth; // default: UISplitViewControllerAutomaticDimension
 
+// By default YES.
+@property (nonatomic, assign) BOOL includesOpaqueRoundedCornersOverlay;
+
 @property (weak, nonatomic, nullable) id <MMSplitViewControllerDelegate> delegate;
 
 // Returns YES if the view controller can be toggled hidden and visible if the current display mode allows it.

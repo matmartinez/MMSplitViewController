@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSMutableSet <UIView *> *visiblePanes;
 @property (strong, nonatomic) MMSpringScrollAnimator *scrollAnimator;
 @property (strong, nonatomic) MMRoundedCornerOverlayView *bounceCornersOverlayView;
+@property (strong, nonatomic) UIView *bounceElasticBackgroundView;
 
 @property (strong, nonatomic) MMInvocationForwarder *delegateForwarder;
 @property (weak, nonatomic) id <MMSplitScrollViewDelegate> clientDelegate;
@@ -83,7 +84,11 @@
     self.scrollAnimator = springScrollAnimator;
     
     // UIScrollView properties:
-    self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+    if (@available(iOS 11.0, *)) {
+        [self setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+#endif
     self.showsHorizontalScrollIndicator = NO;
     self.bounces = YES;
     self.decelerationRate = UIScrollViewDecelerationRateFast;
@@ -325,13 +330,18 @@
     const BOOL isBouncing = (contentOffset.x < 0.0f || contentOffset.x > maximumContentOffset);
     
     UIRectCorner corners = 0;
-    CGRect frame = bounds;
+    CGRect cornersRect = bounds;
+    CGRect bounceRect = CGRectZero;
     
     if (isBouncing) {
-        const CGRect screenRect = self.window.bounds;
-        const CGRect externalRect = [self convertRect:bounds toView:self.window];
-        
         const BOOL isAtBeginning = (contentOffset.x < 0.0f);
+        
+        bounceRect.size.height = CGRectGetHeight(bounds);
+        bounceRect.origin.x = isAtBeginning ? contentOffset.x : contentSize.width;
+        bounceRect.size.width = isAtBeginning ? -contentOffset.x : contentOffset.x - maximumContentOffset;
+        
+        const CGRect screenRect = self.window.bounds;
+        const CGRect externalRect = [self.superview convertRect:self.frame toView:self.window];
         
         if (isAtBeginning && CGRectGetMinX(externalRect) == CGRectGetMinX(screenRect)) {
             BOOL atLeastOnePinnedPane = NO;
@@ -353,15 +363,18 @@
             corners = (UIRectCornerTopRight | UIRectCornerBottomRight);
         }
         
-        frame.origin.x = isAtBeginning ? 0.0f : maximumContentOffset;
+        cornersRect.origin.x = isAtBeginning ? 0.0f : maximumContentOffset;
     }
     
     if (corners != 0) {
-        self.bounceCornersOverlayView.frame = frame;
+        self.bounceCornersOverlayView.frame = cornersRect;
         self.bounceCornersOverlayView.overlayRoundedCorners = corners;
+        self.bounceElasticBackgroundView.frame = bounceRect;
         
+        [self addSubview:self.bounceElasticBackgroundView];
         [self addSubview:self.bounceCornersOverlayView];
     } else {
+        [self.bounceElasticBackgroundView removeFromSuperview];
         [self.bounceCornersOverlayView removeFromSuperview];
     }
 }
@@ -652,11 +665,15 @@
         
         if (overlayScreenCornersWhenBouncing) {
             self.bounceCornersOverlayView = [[MMRoundedCornerOverlayView alloc] initWithFrame:CGRectZero];
+            self.bounceElasticBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+            self.bounceElasticBackgroundView.backgroundColor = UIColor.blackColor;
             
             [self setNeedsLayout];
         } else {
             [self.bounceCornersOverlayView removeFromSuperview];
+            [self.bounceElasticBackgroundView removeFromSuperview];
             self.bounceCornersOverlayView = nil;
+            self.bounceElasticBackgroundView = nil;
         }
     }
 }

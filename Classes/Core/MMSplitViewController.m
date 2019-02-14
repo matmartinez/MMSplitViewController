@@ -79,7 +79,7 @@
         _primaryCollapsedScrollView = [[MMSplitScrollView alloc] initWithFrame:CGRectZero];
         _primaryCollapsedScrollView.pagingEnabled = YES;
         _primaryCollapsedScrollView.alwaysBounceHorizontal = YES;
-        _primaryCollapsedScrollView.overlayScreenCornersWhenBouncing = YES;
+        _primaryCollapsedScrollView.overlayScreenCornersWhenBouncing = self.includesOpaqueRoundedCornersOverlay;
         _primaryCollapsedScrollView.delegate = self;
     }
     return _primaryCollapsedScrollView;
@@ -91,7 +91,7 @@
         _scrollView = [[MMSplitScrollView alloc] initWithFrame:CGRectZero];
         _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         _scrollView.alwaysBounceHorizontal = YES;
-        _scrollView.overlayScreenCornersWhenBouncing = YES;
+        _scrollView.overlayScreenCornersWhenBouncing = self.includesOpaqueRoundedCornersOverlay;
         _scrollView.delegate = self;
     }
     return _scrollView;
@@ -576,6 +576,16 @@
     const BOOL scrollingPastPaneIsPossible = -CGRectGetMinX(paneRect) >= maximumContentOffsetX;
     
     return (scrollingPastPaneIsPossible);
+}
+
+- (void)setIncludesOpaqueRoundedCornersOverlay:(BOOL)flag
+{
+    if (flag != _includesOpaqueRoundedCornersOverlay) {
+        _includesOpaqueRoundedCornersOverlay = flag;
+        
+        _scrollView.overlayScreenCornersWhenBouncing = flag;
+        _primaryCollapsedScrollView.overlayScreenCornersWhenBouncing = flag;
+    }
 }
 
 @end
