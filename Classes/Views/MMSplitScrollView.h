@@ -69,7 +69,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic, readonly) NSIndexSet *indexesForVisiblePanes;
 
 @property (weak, nonatomic, nullable) id <MMSplitScrollViewDelegate> delegate;
+
 @property (readonly, nonatomic) UITapGestureRecognizer *snapTapGestureRecognizer;
+
+@property (assign, nonatomic) BOOL overlayScreenCornersWhenBouncing;
 
 - (void)invalidatePaneSizes;
 

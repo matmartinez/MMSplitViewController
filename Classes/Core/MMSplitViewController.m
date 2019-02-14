@@ -79,6 +79,7 @@
         _primaryCollapsedScrollView = [[MMSplitScrollView alloc] initWithFrame:CGRectZero];
         _primaryCollapsedScrollView.pagingEnabled = YES;
         _primaryCollapsedScrollView.alwaysBounceHorizontal = YES;
+        _primaryCollapsedScrollView.overlayScreenCornersWhenBouncing = YES;
         _primaryCollapsedScrollView.delegate = self;
     }
     return _primaryCollapsedScrollView;
@@ -90,6 +91,7 @@
         _scrollView = [[MMSplitScrollView alloc] initWithFrame:CGRectZero];
         _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         _scrollView.alwaysBounceHorizontal = YES;
+        _scrollView.overlayScreenCornersWhenBouncing = YES;
         _scrollView.delegate = self;
     }
     return _scrollView;

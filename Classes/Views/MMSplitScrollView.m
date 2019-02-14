@@ -11,6 +11,7 @@
 #import "MMInvocationForwarder.h"
 #import "MMSpringScrollAnimator.h"
 #import "MMSplitHuggingSupport.h"
+#import "MMRoundedCornerOverlayView.h"
 
 @interface MMSplitScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
     struct {
@@ -28,6 +29,7 @@
 @property (assign, nonatomic) NSInteger snappedPaneIndex;
 @property (strong, nonatomic) NSMutableSet <UIView *> *visiblePanes;
 @property (strong, nonatomic) MMSpringScrollAnimator *scrollAnimator;
+@property (strong, nonatomic) MMRoundedCornerOverlayView *bounceCornersOverlayView;
 
 @property (strong, nonatomic) MMInvocationForwarder *delegateForwarder;
 @property (weak, nonatomic) id <MMSplitScrollViewDelegate> clientDelegate;
@@ -309,12 +311,68 @@
     return pane;
 }
 
+- (void)layoutBounceCornersOverlayIfNeeded
+{
+    if (!self.overlayScreenCornersWhenBouncing) {
+        return;
+    }
+    
+    CGRect bounds = self.bounds;
+    CGSize contentSize = self.contentSize;
+    CGPoint contentOffset = self.contentOffset;
+    
+    const CGFloat maximumContentOffset = (contentSize.width - CGRectGetWidth(bounds));
+    const BOOL isBouncing = (contentOffset.x < 0.0f || contentOffset.x > maximumContentOffset);
+    
+    UIRectCorner corners = 0;
+    CGRect frame = bounds;
+    
+    if (isBouncing) {
+        const CGRect screenRect = self.window.bounds;
+        const CGRect externalRect = [self convertRect:bounds toView:self.window];
+        
+        const BOOL isAtBeginning = (contentOffset.x < 0.0f);
+        
+        if (isAtBeginning && CGRectGetMinX(externalRect) == CGRectGetMinX(screenRect)) {
+            BOOL atLeastOnePinnedPane = NO;
+            if (isAtBeginning) {
+                for (UIView *pane in _visiblePanes) {
+                    if ([self shouldPinToVisibleBoundsInPane:pane]) {
+                        atLeastOnePinnedPane = YES;
+                        break;
+                    }
+                }
+            }
+            
+            if (!atLeastOnePinnedPane) {
+                corners = (UIRectCornerTopLeft | UIRectCornerBottomLeft);
+            }
+        }
+        
+        if (!isAtBeginning && CGRectGetMaxX(externalRect) == CGRectGetMaxX(screenRect)) {
+            corners = (UIRectCornerTopRight | UIRectCornerBottomRight);
+        }
+        
+        frame.origin.x = isAtBeginning ? 0.0f : maximumContentOffset;
+    }
+    
+    if (corners != 0) {
+        self.bounceCornersOverlayView.frame = frame;
+        self.bounceCornersOverlayView.overlayRoundedCorners = corners;
+        
+        [self addSubview:self.bounceCornersOverlayView];
+    } else {
+        [self.bounceCornersOverlayView removeFromSuperview];
+    }
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
     [self calculateLayoutForCurrentBounds];
     [self layoutVisiblePanes];
+    [self layoutBounceCornersOverlayIfNeeded];
     [self notifyPaneBeingSnappedIfNeeded];
 }
 
@@ -582,6 +640,24 @@
         UIView *paneView = [self panesInRect:rect].firstObject;
         
         [self scrollToPane:paneView animated:YES];
+    }
+}
+
+#pragma mark - Bounce corners.
+
+- (void)setOverlayScreenCornersWhenBouncing:(BOOL)overlayScreenCornersWhenBouncing
+{
+    if (overlayScreenCornersWhenBouncing != _overlayScreenCornersWhenBouncing) {
+        _overlayScreenCornersWhenBouncing = overlayScreenCornersWhenBouncing;
+        
+        if (overlayScreenCornersWhenBouncing) {
+            self.bounceCornersOverlayView = [[MMRoundedCornerOverlayView alloc] initWithFrame:CGRectZero];
+            
+            [self setNeedsLayout];
+        } else {
+            [self.bounceCornersOverlayView removeFromSuperview];
+            self.bounceCornersOverlayView = nil;
+        }
     }
 }
 

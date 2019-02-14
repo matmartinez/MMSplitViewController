@@ -24,6 +24,7 @@
 		09382FF6221467D9000B6508 /* MMSnapIndicatorRounded@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF1221467D9000B6508 /* MMSnapIndicatorRounded@3x.png */; };
 		09382FF7221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF2221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png */; };
 		09382FF8221467D9000B6508 /* MMSnapIndicatorRounded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09382FF3221467D9000B6508 /* MMSnapIndicatorRounded@2x.png */; };
+		094809A72214E3900079E3BA /* MMRoundedCornerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 094809A62214E3900079E3BA /* MMRoundedCornerOverlayView.m */; };
 		098EF153220092E900BC78F5 /* MMSplitScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF152220092E900BC78F5 /* MMSplitScrollView.m */; };
 		098EF1562200945300BC78F5 /* MMSplitPaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1552200945300BC78F5 /* MMSplitPaneView.m */; };
 		098EF1592200947200BC78F5 /* MMSplitSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */; };
@@ -61,6 +62,8 @@
 		09382FF1221467D9000B6508 /* MMSnapIndicatorRounded@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapIndicatorRounded@3x.png"; sourceTree = "<group>"; };
 		09382FF2221467D9000B6508 /* MMSnapBackIndicatorDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapBackIndicatorDefault@2x.png"; sourceTree = "<group>"; };
 		09382FF3221467D9000B6508 /* MMSnapIndicatorRounded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSnapIndicatorRounded@2x.png"; sourceTree = "<group>"; };
+		094809A52214E3900079E3BA /* MMRoundedCornerOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMRoundedCornerOverlayView.h; sourceTree = "<group>"; };
+		094809A62214E3900079E3BA /* MMRoundedCornerOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMRoundedCornerOverlayView.m; sourceTree = "<group>"; };
 		098EF151220092E900BC78F5 /* MMSplitScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitScrollView.h; sourceTree = "<group>"; };
 		098EF152220092E900BC78F5 /* MMSplitScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitScrollView.m; sourceTree = "<group>"; };
 		098EF1542200945300BC78F5 /* MMSplitPaneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitPaneView.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				09382FD7220C8451000B6508 /* MMSplitHuggingSupport.h */,
 				098EF1572200947200BC78F5 /* MMSplitSeparatorView.h */,
 				098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */,
+				094809A52214E3900079E3BA /* MMRoundedCornerOverlayView.h */,
+				094809A62214E3900079E3BA /* MMRoundedCornerOverlayView.m */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -277,6 +282,7 @@
 				09382FEB221369C7000B6508 /* MMSnapFooterView.m in Sources */,
 				09382FEE22136A80000B6508 /* MMSnapSupplementaryView.m in Sources */,
 				09382FDE2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m in Sources */,
+				094809A72214E3900079E3BA /* MMRoundedCornerOverlayView.m in Sources */,
 				092DC4602203939D0021F635 /* MMSpringScrollAnimator.m in Sources */,
 				0928765F21F79F38002AAE3E /* AppDelegate.m in Sources */,
 				098EF1592200947200BC78F5 /* MMSplitSeparatorView.m in Sources */,
