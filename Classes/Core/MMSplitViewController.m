@@ -146,6 +146,31 @@
     return viewControllers.copy;
 }
 
+- (UIViewController *)partiallyVisibleViewController
+{
+    if (!self.isViewLoaded || self.displayMode == MMViewControllerDisplayModeSinglePage) {
+        return nil;
+    }
+    
+    MMSplitScrollView *scrollView = self.scrollView;
+    NSIndexSet *indexesForVisiblePanes = scrollView.indexesForVisiblePanes;
+    
+    if (indexesForVisiblePanes.count > 0) {
+        const NSUInteger lastIndex = indexesForVisiblePanes.lastIndex;
+        
+        CGRect visibleRect = self.scrollView.bounds;
+        visibleRect.origin = self.scrollView.contentOffset;
+        
+        const CGRect rect = [scrollView rectForPane:scrollView.panes[lastIndex]];
+        
+        if (!CGRectContainsRect(visibleRect, rect)) {
+            return [self viewControllerForPage:lastIndex inScrollView:scrollView];
+        }
+    }
+    
+    return nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

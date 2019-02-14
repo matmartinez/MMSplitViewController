@@ -79,7 +79,8 @@ typedef NS_ENUM(NSUInteger, MMViewControllerDisplayMode){
 // Returns the visible view controllers.
 @property (nonatomic, copy, readonly) NSArray <UIViewController *> *visibleViewControllers;
 
-@property (nonatomic, readonly) UIViewController *partiallyVisibleViewController;
+// Returns the current partially visible view controller, if the current mode allows it.
+@property (nonatomic, readonly, nullable) UIViewController *partiallyVisibleViewController;
 
 // An animatable property that can be used to adjust the relative width of the primary view controller in the split view controller. This preferred width will be limited by the maximum and minimum properties (and potentially other system heuristics).
 @property (nonatomic, assign) CGFloat preferredPrimaryColumnWidthFraction; // default: UISplitViewControllerAutomaticDimension
