@@ -128,7 +128,7 @@
             if (animated) {
                 [self.scrollAnimator animateScrollToContentOffset:contentOffset duration:0.55];
             } else {
-                [self setContentOffset:contentOffset];
+                [self setContentOffset:contentOffset animated:NO];
             }
         }
     }
@@ -416,7 +416,8 @@
     if (pagingEnabled != self.isPagingEnabled) {
         [super setPagingEnabled:pagingEnabled];
         
-        [self invalidatePaneSizes];
+        [self reloadSizingData];
+        [self setNeedsLayout];
     }
 }
 
@@ -472,7 +473,7 @@
         _panes = [panes copy];
         
         [self reloadSizingData];
-        [self invalidatePaneSizes];
+        [self setNeedsLayout];
     }
 }
 
