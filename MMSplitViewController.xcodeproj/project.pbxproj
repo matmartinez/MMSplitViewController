@@ -44,11 +44,11 @@
 		0928767421F79F9A002AAE3E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		0928767A21F7AC38002AAE3E /* FauxListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FauxListViewController.h; sourceTree = "<group>"; };
 		0928767B21F7AC38002AAE3E /* FauxListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FauxListViewController.m; sourceTree = "<group>"; };
-		092DC45E2203939D0021F635 /* MMSpringScrollAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMSpringScrollAnimator.h; path = ../../Classes/Utilities/MMSpringScrollAnimator.h; sourceTree = "<group>"; };
-		092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSpringScrollAnimator.m; path = ../../Classes/Utilities/MMSpringScrollAnimator.m; sourceTree = "<group>"; };
+		092DC45E2203939D0021F635 /* MMSpringScrollAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSpringScrollAnimator.h; sourceTree = "<group>"; };
+		092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSpringScrollAnimator.m; sourceTree = "<group>"; };
 		09382FD7220C8451000B6508 /* MMSplitHuggingSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitHuggingSupport.h; sourceTree = "<group>"; };
-		09382FDC2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MMSplitViewController+MMViewControllerContainmentCompatibility.h"; path = "../../Classes/Compatibility/MMSplitViewController+MMViewControllerContainmentCompatibility.h"; sourceTree = "<group>"; };
-		09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MMSplitViewController+MMViewControllerContainmentCompatibility.m"; path = "../../Classes/Compatibility/MMSplitViewController+MMViewControllerContainmentCompatibility.m"; sourceTree = "<group>"; };
+		09382FDC2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMSplitViewController+MMViewControllerContainmentCompatibility.h"; sourceTree = "<group>"; };
+		09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMSplitViewController+MMViewControllerContainmentCompatibility.m"; sourceTree = "<group>"; };
 		09382FE3221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMSplitViewController+MMSupplementaryBars.h"; sourceTree = "<group>"; };
 		09382FE4221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMSplitViewController+MMSupplementaryBars.m"; sourceTree = "<group>"; };
 		09382FE6221369C7000B6508 /* MMSnapFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSnapFooterView.h; sourceTree = "<group>"; };
@@ -70,10 +70,10 @@
 		098EF1552200945300BC78F5 /* MMSplitPaneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitPaneView.m; sourceTree = "<group>"; };
 		098EF1572200947200BC78F5 /* MMSplitSeparatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitSeparatorView.h; sourceTree = "<group>"; };
 		098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitSeparatorView.m; sourceTree = "<group>"; };
-		098EF15B2200B2F000BC78F5 /* MMInvocationForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MMInvocationForwarder.h; path = ../../Classes/Utilities/MMInvocationForwarder.h; sourceTree = "<group>"; };
-		098EF15C2200B2F000BC78F5 /* MMInvocationForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MMInvocationForwarder.m; path = ../../Classes/Utilities/MMInvocationForwarder.m; sourceTree = "<group>"; };
-		099F47112214B8F00062046F /* MMSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MMSplitViewController.h; path = Classes/Core/MMSplitViewController.h; sourceTree = "<group>"; };
-		099F47122214B8F00062046F /* MMSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MMSplitViewController.m; path = Classes/Core/MMSplitViewController.m; sourceTree = "<group>"; };
+		098EF15B2200B2F000BC78F5 /* MMInvocationForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMInvocationForwarder.h; sourceTree = "<group>"; };
+		098EF15C2200B2F000BC78F5 /* MMInvocationForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMInvocationForwarder.m; sourceTree = "<group>"; };
+		099F47112214B8F00062046F /* MMSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitViewController.h; sourceTree = "<group>"; };
+		099F47122214B8F00062046F /* MMSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSplitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,6 @@
 				09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */,
 			);
 			name = Compatibility;
-			path = Classes/Compatibility;
 			sourceTree = "<group>";
 		};
 		09382FDF221367E6000B6508 /* Supplementary bars */ = {
@@ -144,7 +143,6 @@
 				09382FE9221369C7000B6508 /* MMSnapFooterView.m */,
 			);
 			name = "Supplementary bars";
-			path = "Classes/Supplementary bars";
 			sourceTree = "<group>";
 		};
 		09382FF9221467DE000B6508 /* Images */ = {
@@ -156,7 +154,8 @@
 				09382FF3221467D9000B6508 /* MMSnapIndicatorRounded@2x.png */,
 				09382FF1221467D9000B6508 /* MMSnapIndicatorRounded@3x.png */,
 			);
-			path = Images;
+			name = Images;
+			path = ../Images;
 			sourceTree = "<group>";
 		};
 		09382FFA2214A3A6000B6508 /* Views */ = {
@@ -173,7 +172,6 @@
 				094809A62214E3900079E3BA /* MMRoundedCornerOverlayView.m */,
 			);
 			name = Views;
-			path = Classes/Views;
 			sourceTree = "<group>";
 		};
 		098EF15A2200B2DD00BC78F5 /* Utilities */ = {
@@ -185,7 +183,6 @@
 				092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */,
 			);
 			name = Utilities;
-			path = Classes/Utilities;
 			sourceTree = "<group>";
 		};
 		099F47102214B8E70062046F /* MMSplitViewController */ = {
@@ -200,6 +197,7 @@
 				09382FF9221467DE000B6508 /* Images */,
 			);
 			name = MMSplitViewController;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
