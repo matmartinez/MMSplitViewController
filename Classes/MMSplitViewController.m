@@ -519,7 +519,7 @@
         NSString *invalidateSafeAreaSelectorString = [@[ @"_updateCont", @"entOverlayInsetsF", @"orSelfAndChildren" ] componentsJoinedByString:@""];
 
         invalidateSafeAreaSelector = NSSelectorFromString(invalidateSafeAreaSelectorString);
-        invalidateSafeAreaInvocationNeeded = [self respondsToSelector:@selector(safeAreaInsets)] && [self respondsToSelector:invalidateSafeAreaSelector];
+        invalidateSafeAreaInvocationNeeded = [UIScrollView instancesRespondToSelector:@selector(safeAreaInsets)] && [self respondsToSelector:invalidateSafeAreaSelector];
     });
 
     if (invalidateSafeAreaInvocationNeeded) {
