@@ -27,12 +27,17 @@
         UIScrollView *containerView = [[UIScrollView alloc] initWithFrame:(CGRect){ .size = frame.size }];
         containerView.translatesAutoresizingMaskIntoConstraints = NO;
         containerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-        containerView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;;
         containerView.bounces = NO;
         containerView.scrollEnabled = NO;
         containerView.showsHorizontalScrollIndicator = NO;
         containerView.showsVerticalScrollIndicator = NO;
         containerView.clipsToBounds = NO;
+        
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+        if (@available(iOS 11.0, *)) {
+            containerView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+#endif
         
         _containerView = containerView;
         

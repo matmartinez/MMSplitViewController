@@ -519,7 +519,7 @@
         NSString *invalidateSafeAreaSelectorString = [@[ @"_updateCont", @"entOverlayInsetsF", @"orSelfAndChildren" ] componentsJoinedByString:@""];
 
         invalidateSafeAreaSelector = NSSelectorFromString(invalidateSafeAreaSelectorString);
-        invalidateSafeAreaInvocationNeeded = [self respondsToSelector:invalidateSafeAreaSelector];
+        invalidateSafeAreaInvocationNeeded = [self respondsToSelector:@selector(safeAreaInsets)] && [self respondsToSelector:invalidateSafeAreaSelector];
     });
 
     if (invalidateSafeAreaInvocationNeeded) {
