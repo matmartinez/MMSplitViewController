@@ -137,14 +137,42 @@ typedef NS_ENUM(NSUInteger, MMViewControllerDisplayMode){
  */
 @interface MMSplitViewController : UIViewController
 
-@property (nonatomic, copy, null_resettable) NSArray <UIViewController *> *viewControllers;
+/**
+ *  The array of view controllers managed by the receiver.
+ *
+ *  @discussion When configuring the split view controller, you can use this property to assign view controllers that you want displayed. After the view controllers are set, the split view controller uses information from the -c MMSplitViewControllerDelegate protocol to assign the primary and secondary column sizes.
+ 
+     After the split view controller is onscreen, you can add more child view controllers using the @c -showViewController:sender: method. Although you can still change the view controllers in this property directly, you should do so only if you manually manage your app’s view controller transitions.
+ 
+ *  @note This property will always return the complete view controller stack. To obtain the visible view controllers, see @c -visibleViewControllers.
+ *
+ */
+@property (nonatomic, copy) NSArray <__kindof UIViewController *> *viewControllers;
 
+/**
+ *  Scrolls the split view controller to the specified view controller.
+ *
+ *  @param viewController A view controller part of the view controller stack.
+ *  @param animated       Specify @c YES if you want to animate the transition.
+ *
+ *  @note This method does nothing if the view controller is not part of the child view controller stack.
+ */
 - (void)scrollToViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
-// Returns whatever display mode the split view controller is in.
+/**
+ *  The preferred arrangement of the split view controller interface.
+ *
+ *  @discussion Use this property to specify the display mode that you prefer to use. The split view controller makes every effort to adopt the interface you specify but may use a different type of interface if there is not enough space to support your preferred choice. If changing the value of this property leads to an actual change in the current display mode, the split view controller animates the resulting change.
+ 
+    Setting the value of this property to @c MMViewControllerDisplayModeAutomatic causes the split view controller to choose the most appropriate display mode for the currently available space. The default value of this property is @c MMViewControllerDisplayModeAutomatic.
+ */
 @property (nonatomic, assign) MMViewControllerDisplayMode preferredDisplayMode;
 
-// Defines the preferred display mode the split view controller is in.
+/**
+ *  The current arrangement of the split view controller’s contents.
+ *
+ *  @note This property reflects the arrangement of the split interface. The value in this property is never set to @c MMViewControllerDisplayModeAutomatic. To change the current display mode, change the value of the @c -preferredDisplayMode property.
+ */
 @property (nonatomic, assign, readonly) MMViewControllerDisplayMode displayMode;
 
 // Returns the visible view controllers.
