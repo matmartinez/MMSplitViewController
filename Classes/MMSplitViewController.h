@@ -129,6 +129,11 @@ typedef NS_ENUM(NSUInteger, MMViewControllerDisplayMode){
 @end
 
 /**
+ *  The default value to apply to a given dimension.
+ */
+extern CGFloat const MMSplitViewControllerAutomaticDimension;
+
+/**
  *  A split view controller is a container view controller that manages a stack of child view controllers users can manipulate using gestures.
  
     In this type of interface, changes in a primary view controller (the master) drive changes in a secondary view controller (the detail). The view controllers can be arranged so that they are side-by-side, or so that only one at a time is visible. Also and depending on the available app size, a view controller can be only partially visible.
@@ -175,30 +180,81 @@ typedef NS_ENUM(NSUInteger, MMViewControllerDisplayMode){
  */
 @property (nonatomic, assign, readonly) MMViewControllerDisplayMode displayMode;
 
-// Returns the visible view controllers.
+/**
+ *  The view controllers associated with the currently visible views in the split interface.
+ *
+ *  @note Because the split interface can be manipulated with gestures, this method can return view controllers that correspond to an interactive transition that are partially visible. If you're interested in the current snapped view controller, see the methods from the @c MMSplitViewControllerDelegate protocol.
+ */
 @property (nonatomic, copy, readonly) NSArray <UIViewController *> *visibleViewControllers;
 
-// Returns the current partially visible view controller, if the current mode allows it.
+/**
+ *  A view controller that is partially visible on an edge of the screen, or @c nil.
+ *
+ *  When the split interface arranges views side-by-side, a view controller that's not snapped can be partially visible on an edge of the screen. You can use this property to determine showing this view controller when you drive changes to the interface.
+ *
+ *  @note This method will always return @c nil if the display mode is MMViewControllerDisplayModeSinglePage.
+ */
 @property (nonatomic, readonly, nullable) UIViewController *partiallyVisibleViewController;
 
-// An animatable property that can be used to adjust the relative width of the primary view controller in the split view controller. This preferred width will be limited by the maximum and minimum properties (and potentially other system heuristics).
-@property (nonatomic, assign) CGFloat preferredPrimaryColumnWidthFraction; // default: UISplitViewControllerAutomaticDimension
+/**
+ *  The relative width of the primary view controller’s content.
+ *
+ *  Use this property to specify your preferred width for the primary view controller’s view. The value of this property is a floating-point number between @c 0.0 and @c 1.0 that represents the percentage of the overall width of the split view controller. For example, the value @c 0.4 represents 40% of the current width. The default value of this property is @c MMSplitViewControllerAutomaticDimension, which results in an appropriate width for the primary view controller.
+ 
+ *  The actual width of the primary view controller is constrained by the values in the @c minimumPrimaryColumnWidth and @c maximumPrimaryColumnWidth properties. The split view controller makes every other attempt to honor the width you specify but may change this value to accommodate the available space. You can get the actual width assigned to the primary view controller’s view from the @c primaryColumnWidth property.
+ */
+@property (nonatomic, assign) CGFloat preferredPrimaryColumnWidthFraction;
 
-// An animatable property that can be used to adjust the minimum absolute width of the primary view controller in the split view controller.
-@property (nonatomic, assign) CGFloat minimumPrimaryColumnWidth; // default: UISplitViewControllerAutomaticDimension
+/**
+ *  The minimum width (in points) required for the primary view controller’s content.
+ *
+ *  Use this property in conjunction with the maximumPrimaryColumnWidth property to ensure the width of the primary view controller’s content is set to an acceptable value. The preliminary width is specified by the @c preferredPrimaryColumnWidthFraction property, which is applied to the split view controller’s width and checked against these bounds. If the resulting width is less than the value in this property, it is set to the value in this property.
+ *
+ *  The default value of this property is @c MMSplitViewControllerAutomaticDimension, which corresponds to a minimum width of 320 points.
+ */
+@property (nonatomic, assign) CGFloat minimumPrimaryColumnWidth;
 
-// An animatable property that can be used to adjust the maximum absolute width of the primary view controller in the split view controller.
-@property (nonatomic, assign) CGFloat maximumPrimaryColumnWidth; // default: UISplitViewControllerAutomaticDimension
+/**
+ *  The maximum width (in points) allowed for the primary view controller’s content.
+ *
+ *  Use this property in conjunction with the @c minimumPrimaryColumnWidth property to ensure the width of the primary view controller’s content is set to an acceptable value. The preliminary width is specified by the @c preferredPrimaryColumnWidthFraction property, which is applied to the split view controller’s width and checked against these bounds. If the resulting width is greater than the value in this property, it is set to the value in this property.
+ *
+ *  The default value of this property is @c MMSplitViewControllerAutomaticDimension, which corresponds to a minimum width of 400 points.
+ */
+@property (nonatomic, assign) CGFloat maximumPrimaryColumnWidth;
 
-// An animatable property that can be used to adjust the minimum absolute width of the secondary view controller in the split view controller.
-@property (nonatomic, assign) CGFloat minimumSecondaryColumnWidth; // default: UISplitViewControllerAutomaticDimension
+/**
+ *  The minimum width (in points) required for the secondary view controller’s content.
+ *
+ *  Use this property to ensure the width of the secondary view controller’s content is set to an acceptable value. The preliminary width is specified by split view controller’s bounds minus the primary column width and checked against these bounds. If the resulting width is less than the value in this property, it is set to the value in this property.
+ *
+ *  The default value of this property is @c MMSplitViewControllerAutomaticDimension, which corresponds to a minimum width of 410 points.
+ */
+@property (nonatomic, assign) CGFloat minimumSecondaryColumnWidth;
 
-// By default YES.
+/**
+ *  This property determines if the split view controller should attempt to mask the view’s content to the device’s screen corner radius.
+ *
+ *  The default value of this property is @c YES.
+ */
 @property (nonatomic, assign) BOOL includesOpaqueRoundedCornersOverlay;
 
+/**
+ *  The delegate you want to receive split view controller messages.
+ *
+ *  The split view controller uses its delegate to manage the sizing and snapping behavior of related view controllers. For more information about the methods you can implement in your delegate, see @c MMSplitViewControllerDelegate.
+ */
 @property (weak, nonatomic, nullable) id <MMSplitViewControllerDelegate> delegate;
 
-// Returns YES if the view controller can be toggled hidden and visible if the current display mode allows it.
+/**
+ *  Determines if the visibility of the specified view controller can be toggled or not, if the current display mode allows it.
+ *
+ *  Depending on the current app size, scrolling gestures may be disabled for the split view controller, eliminating the need for a button or another control that hides the specified view controller. Use this method to determine if such a control should be needed.
+ *
+ *  @param viewController The view controller to which determine visibility toggle elegibility.
+ *
+ *  @return This method returns @c YES if the split view controller can collapse the specified view controller, or @c NO to indicate that the visibility of the specified view controller cannot be changed.
+ */
 - (BOOL)canToggleVisibilityForViewController:(UIViewController *)viewController;
 
 @end

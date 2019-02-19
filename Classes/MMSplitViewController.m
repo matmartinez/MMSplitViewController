@@ -29,6 +29,8 @@
 
 @end
 
+CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
+
 @implementation MMSplitViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
