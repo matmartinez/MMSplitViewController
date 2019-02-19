@@ -57,10 +57,12 @@
     if (!self.displayLink) {
         self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateContentOffset:)];
         
-        if ([self.displayLink respondsToSelector:@selector(setPreferredFramesPerSecond:)]) {
-            self.displayLink.preferredFramesPerSecond = 0; // The display link will fire at the native cadence of the display hardware.
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
+        if (@available(iOS 10.0, *)) {
+            // The display link will fire at the native cadence of the display hardware.
+            self.displayLink.preferredFramesPerSecond = 0;
         }
-        
+#endif
         [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     } else {
         self.displayLink.paused = NO;

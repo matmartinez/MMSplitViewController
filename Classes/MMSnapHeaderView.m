@@ -46,6 +46,7 @@
 @property (assign, nonatomic, readonly) CGFloat regularHeight;
 @property (assign, nonatomic, readonly) CGFloat largeHeaderHeight;
 @property (assign, nonatomic) CGFloat largeHeaderScaleFactor;
+@property (assign, nonatomic) BOOL contentIsBeingScrolled;
 
 @end
 
@@ -197,11 +198,11 @@
     
     _regularBackButton.titleLabel.font = [UIFont systemFontOfSize:headingPointSize];
     
-    if ([UIFont respondsToSelector:@selector(systemFontOfSize:weight:)]) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+    if (@available(iOS 8.2, *)) {
         _largeTitleLabel.font = [UIFont systemFontOfSize:largeHeadingPointSize weight:UIFontWeightBold];
-    } else {
-        _largeTitleLabel.font = [UIFont boldSystemFontOfSize:largeHeadingPointSize];
     }
+#endif
 }
 
 #pragma mark - Actions.
