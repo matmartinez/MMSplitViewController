@@ -206,6 +206,13 @@ extern CGFloat const MMSplitViewControllerAutomaticDimension;
 @property (nonatomic, assign) CGFloat preferredPrimaryColumnWidthFraction;
 
 /**
+ *  The relative width of the primary view controller’s content.
+ *
+ *  This property contains the actual width applied to the primary view controller’s view.
+ */
+@property (nonatomic, readonly) CGFloat primaryColumnWidth;
+
+/**
  *  The minimum width (in points) required for the primary view controller’s content.
  *
  *  Use this property in conjunction with the maximumPrimaryColumnWidth property to ensure the width of the primary view controller’s content is set to an acceptable value. The preliminary width is specified by the @c preferredPrimaryColumnWidthFraction property, which is applied to the split view controller’s width and checked against these bounds. If the resulting width is less than the value in this property, it is set to the value in this property.
@@ -256,6 +263,13 @@ extern CGFloat const MMSplitViewControllerAutomaticDimension;
  *  @return This method returns @c YES if the split view controller can collapse the specified view controller, or @c NO to indicate that the visibility of the specified view controller cannot be changed.
  */
 - (BOOL)canToggleVisibilityForViewController:(UIViewController *)viewController;
+
+/**
+ *  Tells the split view controller to invalidate the size of the columns.
+ *
+ *  The split view controller uses its delegate to manage the sizing of related view controllers. Use this method to reflect changes in your delegate.
+ */
+- (void)invalidateColumnSizes;
 
 @end
 

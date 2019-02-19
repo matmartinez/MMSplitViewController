@@ -54,12 +54,12 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
 - (void)_commonInit
 {
     // Primary:
-    _minimumPrimaryColumnWidth = 320.0f;
-    _maximumPrimaryColumnWidth = 400.0f;
-    _preferredPrimaryColumnWidthFraction = 0.38f;
+    _minimumPrimaryColumnWidth = MMSplitViewControllerAutomaticDimension;
+    _maximumPrimaryColumnWidth = MMSplitViewControllerAutomaticDimension;
+    _preferredPrimaryColumnWidthFraction = MMSplitViewControllerAutomaticDimension;
     
     // Secondary:
-    _minimumSecondaryColumnWidth = 410.0f;
+    _minimumSecondaryColumnWidth = MMSplitViewControllerAutomaticDimension;
     
     // Storage:
     _panes = [NSMapTable strongToStrongObjectsMapTable];
@@ -228,9 +228,60 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
     }
 }
 
+- (void)setPreferredDisplayMode:(MMViewControllerDisplayMode)preferredDisplayMode
+{
+    if (preferredDisplayMode != _preferredDisplayMode) {
+        _preferredDisplayMode = preferredDisplayMode;
+        
+        [self _configureScrollViewWithTraitCollection:self.traitCollection];
+    }
+}
+
 - (MMViewControllerDisplayMode)displayMode
 {
     return self.scrollView.isPagingEnabled ? MMViewControllerDisplayModeSinglePage : MMViewControllerDisplayModeAllVisible;
+}
+
+- (void)setMaximumPrimaryColumnWidth:(CGFloat)maximumPrimaryColumnWidth
+{
+    if (maximumPrimaryColumnWidth != _maximumPrimaryColumnWidth) {
+        _maximumPrimaryColumnWidth = maximumPrimaryColumnWidth;
+        
+        [self invalidateColumnSizes];
+    }
+}
+
+- (void)setPreferredPrimaryColumnWidthFraction:(CGFloat)preferredPrimaryColumnWidthFraction
+{
+    if (preferredPrimaryColumnWidthFraction != _preferredPrimaryColumnWidthFraction) {
+        _preferredPrimaryColumnWidthFraction = preferredPrimaryColumnWidthFraction;
+        
+        [self invalidateColumnSizes];
+    }
+}
+
+- (void)setMinimumSecondaryColumnWidth:(CGFloat)minimumSecondaryColumnWidth
+{
+    if (minimumSecondaryColumnWidth != _minimumSecondaryColumnWidth) {
+        _minimumSecondaryColumnWidth = minimumSecondaryColumnWidth;
+        
+        [self invalidateColumnSizes];
+    }
+}
+
+#pragma mark - Invalidating column sizes.
+
+- (void)invalidateColumnSizes
+{
+    if (!self.isViewLoaded) {
+        return;
+    }
+    
+    if (self.scrollView.isPagingEnabled) {
+        return;
+    }
+    
+    [self.scrollView invalidatePaneSizes];
 }
 
 #pragma mark - Subclassing hooks.
@@ -261,6 +312,10 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
 {
     BOOL horizontallyCompact = traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact;
     BOOL pagingEnabled = horizontallyCompact;
+    
+    if (self.preferredDisplayMode == MMViewControllerDisplayModeSinglePage) {
+        pagingEnabled = YES;
+    }
     
     // Check which panes to compress:
     NSMutableArray <UIViewController *> *primaryViewControllersForCompression = nil;
@@ -384,6 +439,44 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
     return MMViewControllerColumnSizeDefault;
 }
 
+#pragma mark - Sizing property calculation.
+
+NS_INLINE CGFloat MMSplitDimensionUsingDefaultValue(CGFloat value, CGFloat defaultValue){
+    return (value == MMSplitViewControllerAutomaticDimension) ? defaultValue : value;
+};
+
+- (CGFloat)primaryColumnWidth
+{
+    const CGSize boundsSize = self.isViewLoaded ? self.view.bounds.size : CGSizeZero;
+    
+    const CGFloat preferredPrimaryColumnWidthFraction = MMSplitDimensionUsingDefaultValue(self.preferredPrimaryColumnWidthFraction, 0.38f);
+    const CGFloat minimumPrimaryColumnWidth = MMSplitDimensionUsingDefaultValue(self.minimumPrimaryColumnWidth, 320.0f);
+    const CGFloat maximumPrimaryColumnWidth = MMSplitDimensionUsingDefaultValue(self.maximumPrimaryColumnWidth, 400.0f);
+    
+    CGFloat widthForPrimaryColumn = round(boundsSize.width * preferredPrimaryColumnWidthFraction);
+    
+    widthForPrimaryColumn = MAX(widthForPrimaryColumn, minimumPrimaryColumnWidth);
+    widthForPrimaryColumn = MIN(widthForPrimaryColumn, maximumPrimaryColumnWidth);
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+    if (@available(iOS 11.0, *)) {
+        if (self.isViewLoaded) {
+            const UIEdgeInsets safeAreaInsets = self.view.safeAreaInsets;
+            const CGFloat estimatedMargin = MAX(safeAreaInsets.left, safeAreaInsets.right);
+            
+            widthForPrimaryColumn += estimatedMargin;
+        }
+    }
+#endif
+    
+    return minimumPrimaryColumnWidth;
+}
+
+- (CGFloat)actualMinimumSecondaryColumnWidth
+{
+    return MMSplitDimensionUsingDefaultValue(self.minimumSecondaryColumnWidth, 410.0f);
+}
+
 #pragma mark - <MMSplitScrollViewDelegate>
 
 - (void)scrollView:(MMSplitScrollView *)scrollView willDisplayView:(UIView *)view atPage:(NSInteger)page
@@ -448,20 +541,7 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
         return bounds.size;
     }
     
-    // Calculate primary column width:
-    CGFloat widthForPrimaryColumn = round(CGRectGetWidth(bounds) * self.preferredPrimaryColumnWidthFraction);
-    
-    widthForPrimaryColumn = MAX(widthForPrimaryColumn, self.minimumPrimaryColumnWidth);
-    widthForPrimaryColumn = MIN(widthForPrimaryColumn, self.maximumPrimaryColumnWidth);
-    
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
-    if (@available(iOS 11.0, *)) {
-        const UIEdgeInsets safeAreaInsets = self.view.safeAreaInsets;
-        const CGFloat estimatedMargin = MAX(safeAreaInsets.left, safeAreaInsets.right);
-        
-        widthForPrimaryColumn += estimatedMargin;
-    }
-#endif
+    const CGFloat widthForPrimaryColumn = self.primaryColumnWidth;
     
     // Determine whatever paging should be enabled:
     UITraitCollection *traitCollection = self.traitCollection;
@@ -472,19 +552,22 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
             return (CGSize){ widthForPrimaryColumn, CGRectGetHeight(bounds) };
             
         } else if (columnSize == MMViewControllerColumnSizeSecondary) {
-            CGFloat widthForSecondaryColumn = CGRectGetWidth(bounds) - widthForPrimaryColumn;
+            const CGFloat minimumSecondaryColumnWidth = self.actualMinimumSecondaryColumnWidth;
+            const CGFloat maximumWidthForSecondaryColumn = CGRectGetWidth(bounds) - widthForPrimaryColumn;
             
             const BOOL containsAuxiliaryColumn = [self columnSizeForViewController:[self viewControllerForPage:(page + 1) inScrollView:scrollView]] == MMViewControllerColumnSizeAuxiliary;
             
+            CGFloat secondaryColumnWidth = maximumWidthForSecondaryColumn;
+            
             if (containsAuxiliaryColumn) {
-                const CGFloat proposedAdjustingForAuxiliaryColumn = (widthForSecondaryColumn - widthForPrimaryColumn);
-                if (proposedAdjustingForAuxiliaryColumn > self.minimumSecondaryColumnWidth) {
-                    widthForSecondaryColumn = proposedAdjustingForAuxiliaryColumn;
+                const CGFloat proposedAdjustingForAuxiliaryColumn = (maximumWidthForSecondaryColumn - widthForPrimaryColumn);
+                if (proposedAdjustingForAuxiliaryColumn > minimumSecondaryColumnWidth) {
+                    secondaryColumnWidth = proposedAdjustingForAuxiliaryColumn;
                 }
             }
             
-            if (widthForSecondaryColumn > self.minimumSecondaryColumnWidth) {
-                return (CGSize){ widthForSecondaryColumn, CGRectGetHeight(bounds) };
+            if (secondaryColumnWidth > minimumSecondaryColumnWidth) {
+                return (CGSize){ secondaryColumnWidth, CGRectGetHeight(bounds) };
             }
         }
     }
