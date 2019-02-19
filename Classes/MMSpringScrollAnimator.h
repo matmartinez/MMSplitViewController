@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  An object that provides physics-related capabilities to animate scroll views.
+ */
 @interface MMSpringScrollAnimator : NSObject
 
 /**

@@ -12,6 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ *  The base class for the @c MMSnapHeaderView and @c MMSnapFooterView classes.
+ */
 @interface MMSnapSupplementaryView : UIView
 
 /**
@@ -49,12 +52,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The view controller associated to the recipient.
  */
-@property (weak, readonly, nonatomic) UIViewController *viewController;
+@property (weak, readonly, nonatomic, nullable) UIViewController *viewController;
 
 /**
  *  A convenience method that returns the previous view controller in the stack.
  */
-@property (readonly, nonatomic) UIViewController *previousViewController;
+@property (readonly, nonatomic, nullable) UIViewController *previousViewController;
 
 @end
 
