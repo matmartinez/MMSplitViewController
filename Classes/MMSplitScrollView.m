@@ -10,7 +10,7 @@
 #import "MMSplitPaneView.h"
 #import "MMInvocationForwarder.h"
 #import "MMSpringScrollAnimator.h"
-#import "MMSplitHuggingSupport.h"
+#import "MMSplitHuggingSupporting.h"
 #import "MMRoundedCornerOverlayView.h"
 
 @interface MMSplitScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
@@ -264,7 +264,7 @@
             pane.frame = rect;
         }
         
-        if ([pane conformsToProtocol:@protocol(MMSplitHuggingSupport)]) {
+        if ([pane conformsToProtocol:@protocol(MMSplitHuggingSupporting)]) {
             const BOOL isBehindContentOffset = (CGRectGetMinX(rect) < contentOffset.x);
             const BOOL canDisappear = CGRectGetMaxX(rect) <= self.contentSize.width - CGRectGetWidth(bounds);
             
@@ -276,8 +276,8 @@
                 percent = MAX(MIN(distance / maximum, 1.0f), 0.0f);
             }
             
-            [(id <MMSplitHuggingSupport>)pane setHuggingProgress:percent];
-            [(id <MMSplitHuggingSupport>)pane setPagingEnabled:self.isPagingEnabled];
+            [(id <MMSplitHuggingSupporting>)pane setHuggingProgress:percent];
+            [(id <MMSplitHuggingSupporting>)pane setPagingEnabled:self.isPagingEnabled];
         }
         
         if (!isBeingDisplayed) {

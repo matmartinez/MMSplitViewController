@@ -46,7 +46,7 @@
 		0928767B21F7AC38002AAE3E /* FauxListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FauxListViewController.m; sourceTree = "<group>"; };
 		092DC45E2203939D0021F635 /* MMSpringScrollAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSpringScrollAnimator.h; sourceTree = "<group>"; };
 		092DC45F2203939D0021F635 /* MMSpringScrollAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSpringScrollAnimator.m; sourceTree = "<group>"; };
-		09382FD7220C8451000B6508 /* MMSplitHuggingSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitHuggingSupport.h; sourceTree = "<group>"; };
+		09382FD7220C8451000B6508 /* MMSplitHuggingSupporting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSplitHuggingSupporting.h; sourceTree = "<group>"; };
 		09382FDC2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMSplitViewController+MMViewControllerContainmentCompatibility.h"; sourceTree = "<group>"; };
 		09382FDD2212298B000B6508 /* MMSplitViewController+MMViewControllerContainmentCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMSplitViewController+MMViewControllerContainmentCompatibility.m"; sourceTree = "<group>"; };
 		09382FE3221368FC000B6508 /* MMSplitViewController+MMSupplementaryBars.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMSplitViewController+MMSupplementaryBars.h"; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 				098EF152220092E900BC78F5 /* MMSplitScrollView.m */,
 				098EF1542200945300BC78F5 /* MMSplitPaneView.h */,
 				098EF1552200945300BC78F5 /* MMSplitPaneView.m */,
-				09382FD7220C8451000B6508 /* MMSplitHuggingSupport.h */,
+				09382FD7220C8451000B6508 /* MMSplitHuggingSupporting.h */,
 				098EF1572200947200BC78F5 /* MMSplitSeparatorView.h */,
 				098EF1582200947200BC78F5 /* MMSplitSeparatorView.m */,
 				094809A52214E3900079E3BA /* MMRoundedCornerOverlayView.h */,
