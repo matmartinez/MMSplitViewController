@@ -313,7 +313,7 @@
         return [splitPaneView.contentView isKindOfClass:[MMSplitScrollView class]];
     }
     
-    return pane;
+    return NO;
 }
 
 - (void)layoutBounceCornersOverlayIfNeeded
