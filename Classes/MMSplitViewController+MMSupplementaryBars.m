@@ -20,6 +20,37 @@
 
 @implementation MMSplitViewController (MMSupplementaryBars)
 
+NS_INLINE void MMSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSelector){
+    Method originalMethod = class_getInstanceMethod(class, originalSelector);
+    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+    
+    BOOL didAddMethod =
+    class_addMethod(class,
+                    originalSelector,
+                    method_getImplementation(swizzledMethod),
+                    method_getTypeEncoding(swizzledMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(class,
+                            swizzledSelector,
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        MMSwizzleInstanceMethod(class, @selector(viewControllersDidChange:), @selector(snapSupplementaryView_viewControllersDidChange:));
+        MMSwizzleInstanceMethod(class, @selector(willDisplayViewController:), @selector(snapSupplementaryView_willDisplayViewController:));
+        MMSwizzleInstanceMethod(class, @selector(willSnapToViewController:), @selector(snapSupplementaryView_willSnapToViewController:));
+    });
+}
+
 - (NSMutableArray <MMSnapSupplementaryView *> *)allSupplementaryViews
 {
     const SEL key = @selector(allSupplementaryViews);
@@ -62,10 +93,12 @@
     return view;
 }
 
-#pragma mark - MMSplitViewController private.
+#pragma mark - Fun swizzling of subclassing hooks.
 
-- (void)viewControllersDidChange:(NSArray <UIViewController *> *)previousViewControllers
+- (void)snapSupplementaryView_viewControllersDidChange:(NSArray <UIViewController *> *)previousViewControllers
 {
+    [self snapSupplementaryView_viewControllersDidChange:previousViewControllers];
+    
     NSArray <MMSnapSupplementaryView *> *allSupplementaryViews = self.allSupplementaryViews.copy;
     
     if (allSupplementaryViews.count == 0) {
@@ -97,15 +130,19 @@
     }
 }
 
-- (void)willSnapToViewController:(UIViewController *)viewController
+- (void)snapSupplementaryView_willSnapToViewController:(UIViewController *)viewController
 {
+    [self snapSupplementaryView_willSnapToViewController:viewController];
+    
     for (MMSnapSupplementaryView *view in self.allSupplementaryViews.copy) {
         [view snapControllerWillSnapToViewController:viewController];
     }
 }
 
-- (void)willDisplayViewController:(UIViewController *)viewController
+- (void)snapSupplementaryView_willDisplayViewController:(UIViewController *)viewController
 {
+    [self snapSupplementaryView_willDisplayViewController:viewController];
+    
     for (MMSnapSupplementaryView *view in self.allSupplementaryViews.copy) {
         if (view.viewController == viewController) {
             [view snapControllerWillDisplayViewController];

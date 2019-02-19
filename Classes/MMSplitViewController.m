@@ -228,24 +228,26 @@ CGFloat const MMSplitViewControllerAutomaticDimension = CGFLOAT_MAX;
     }
 }
 
+- (MMViewControllerDisplayMode)displayMode
+{
+    return self.scrollView.isPagingEnabled ? MMViewControllerDisplayModeSinglePage : MMViewControllerDisplayModeAllVisible;
+}
+
+#pragma mark - Subclassing hooks.
+
 - (void)viewControllersDidChange:(NSArray <UIViewController *> *)previousViewControllers
 {
-    // Override point for supplementary views.
+    // Override point for subclasses.
 }
 
 - (void)willDisplayViewController:(UIViewController *)viewController
 {
-    // Override point for supplementary views.
+    // Override point for subclasses.
 }
 
 - (void)willSnapToViewController:(UIViewController *)viewController
 {
-    // Override point for supplementary views.
-}
-
-- (MMViewControllerDisplayMode)displayMode
-{
-    return self.scrollView.isPagingEnabled ? MMViewControllerDisplayModeSinglePage : MMViewControllerDisplayModeAllVisible;
+    // Override point for subclasses.
 }
 
 #pragma mark - Configuration.

@@ -259,11 +259,28 @@ extern CGFloat const MMSplitViewControllerAutomaticDimension;
 
 @end
 
-@interface MMSplitViewController (MMSplitSubclassingHooks)
+@interface MMSplitViewController (MMSplitViewControllerSubclassingHooks)
 
-- (void)viewControllersDidChange:(NSArray <UIViewController *> *)previousViewControllers;
-- (void)willDisplayViewController:(UIViewController *)viewController;
-- (void)willSnapToViewController:(UIViewController *)viewController;
+/**
+ *  Called by the split view controller when the view controllers change.
+ *
+ *  @param previousViewControllers The view controller array before the split view controller changed.
+ */
+- (void)viewControllersDidChange:(nullable NSArray <UIViewController *> *)previousViewControllers NS_REQUIRES_SUPER;
+
+/**
+ *  Called by the split view controller when it will display the specified view controller.
+ *
+ *  @param viewController The view controller that is being displayed.
+ */
+- (void)willDisplayViewController:(UIViewController *)viewController NS_REQUIRES_SUPER;
+
+/**
+ *  Called by the split view controller when it snap the specified view controller.
+ *
+ *  @param viewController The view controller that is being snapped.
+ */
+- (void)willSnapToViewController:(UIViewController *)viewController NS_REQUIRES_SUPER;
 
 @end
 
