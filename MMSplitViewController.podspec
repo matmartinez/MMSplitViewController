@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MMSplitViewController"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "An interactive split interface."
   s.homepage     = "https://matias.ma/"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
