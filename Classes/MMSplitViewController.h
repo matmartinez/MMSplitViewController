@@ -247,6 +247,15 @@ extern CGFloat const MMSplitViewControllerAutomaticDimension;
 @property (nonatomic, assign) BOOL includesOpaqueRoundedCornersOverlay;
 
 /**
+ *  Determines if gestures are disabled to transition between child view controllers.
+ *
+ *  The default value of this property is @c NO.
+ *
+ *  @note If you set this property to @c YES, the split view controller disables the gesture recognizers for changing the current snapped view controller.
+ */
+@property (nonatomic, assign) BOOL disablesInteractiveSnapGestures;
+
+/**
  *  The delegate you want to receive split view controller messages.
  *
  *  The split view controller uses its delegate to manage the sizing and snapping behavior of related view controllers. For more information about the methods you can implement in your delegate, see @c MMSplitViewControllerDelegate.

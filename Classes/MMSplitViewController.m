@@ -700,4 +700,15 @@ NS_INLINE CGFloat MMSplitDimensionUsingDefaultValue(CGFloat value, CGFloat defau
     }
 }
 
+- (void)setDisablesInteractiveSnapGestures:(BOOL)disablesInteractiveSnapGestures
+{
+    if (disablesInteractiveSnapGestures != _disablesInteractiveSnapGestures) {
+        _disablesInteractiveSnapGestures = disablesInteractiveSnapGestures;
+        
+        self.scrollView.scrollEnabled = !disablesInteractiveSnapGestures;
+        self.primaryCollapsedScrollView.scrollEnabled = !disablesInteractiveSnapGestures;
+    }
+}
+
+
 @end
