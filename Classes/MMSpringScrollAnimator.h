@@ -41,6 +41,7 @@
  *  Starts the animation an finished at the specified content offset.
  *
  *  @param contentOffset The content offset at which stop animating.
+ *  @param duration The total duration of the animation, measured in seconds.
  */
 - (void)animateScrollToContentOffset:(CGPoint)contentOffset duration:(NSTimeInterval)duration;
 

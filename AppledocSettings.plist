@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>--project-name</key>
+    <string>MMSplitViewController</string>
+    <key>--project-company</key>
+    <string>Matías Martínez</string>
+    <key>--company-id</key>
+    <string>ma.matias</string>
+
+    <key>--output</key>
+    <string>Docs</string>
+
+    <key>--create-docset</key>
+    <false/>
+
+    <key>--ignore</key>
+    <array>
+        <string>*.framework</string>
+    </array>
+
+</dict>
+</plist>
