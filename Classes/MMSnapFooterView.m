@@ -37,6 +37,12 @@ const CGFloat MMSnapFooterFlexibleWidth = CGFLOAT_MAX;
         backgroundView.backgroundColor = [UIColor whiteColor];
         backgroundView.userInteractionEnabled = NO;
         
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+        if (@available(iOS 13.0, *)) {
+            backgroundView.backgroundColor = [UIColor systemBackgroundColor];
+        }
+#endif
+        
         _backgroundView = backgroundView;
         
         [self addSubview:backgroundView];
@@ -45,6 +51,12 @@ const CGFloat MMSnapFooterFlexibleWidth = CGFLOAT_MAX;
         UIView *separatorView = [[UIView alloc] initWithFrame:CGRectZero];
         separatorView.backgroundColor = _separatorColor;
         separatorView.userInteractionEnabled = NO;
+        
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+        if (@available(iOS 13.0, *)) {
+            separatorView.backgroundColor = [UIColor separatorColor];
+        }
+#endif
         
         _separatorView = separatorView;
         
