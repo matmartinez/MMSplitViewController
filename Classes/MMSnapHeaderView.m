@@ -121,6 +121,7 @@
         
         // Title label.
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        titleLabel.accessibilityTraits |= UIAccessibilityTraitHeader;
         
         _titleLabel = titleLabel;
         
@@ -143,6 +144,7 @@
             [self addSubview:largeHeaderContainer];
             
             UILabel *largeTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+            largeTitleLabel.accessibilityTraits |= UIAccessibilityTraitHeader;
             
             _largeTitleLabel = largeTitleLabel;
             
@@ -244,7 +246,6 @@
     };
     
     CGFloat interSpacing = _interSpacing;
-    CGFloat largeTitleSpacing = _barButtonSpacing;
     CGFloat edgeSpacing = _barButtonSpacing;
     CGFloat backEdgeSpacing = _backButtonSpacing;
     
@@ -404,7 +405,10 @@
     
     // Large heading.
     if ([self.class _UINavigationBarUsesLargeTitles]) {
-        CGRect largeContentRect = UIEdgeInsetsInsetRect(bounds, (UIEdgeInsets){ .left = largeTitleSpacing, .right = largeTitleSpacing });
+        static const CGFloat headerScaleDelta = 0.1f;
+        static const CGFloat maximumScale = 1.0f + headerScaleDelta;
+        
+        CGRect largeContentRect = UIEdgeInsetsInsetRect(bounds, (UIEdgeInsets){ .left = edgeSpacing, .right = edgeSpacing });
         
         const CGFloat regularHeight = _regularHeight;
         const CGFloat largeHeaderHeight = _largeHeaderHeight;
@@ -413,16 +417,13 @@
         CGSize largeHeaderSize = calculatedTitleSize;
         largeHeaderSize.width = CGRectGetWidth(largeContentRect);
         
-        const BOOL enabled = (largeHeaderSize.width <= CGRectGetWidth(largeContentRect));
-        largeHeaderSize.width = MIN(largeHeaderSize.width, CGRectGetWidth(largeContentRect));
-        
         CGRect largeHeaderRect = (CGRect){
             .origin.x = CGRectGetMinX(largeContentRect),
             .origin.y = (CGRectGetHeight(largeContentRect) - (regularHeight + largeHeaderHeight)) + roundf((largeHeaderHeight - largeHeaderSize.height) / 2.0f) - 1.0f,
             .size = largeHeaderSize
         };
         
-        CGRect largeHeaderContainerRect = UIEdgeInsetsInsetRect(largeContentRect, (UIEdgeInsets){
+        CGRect largeHeaderContainerRect = UIEdgeInsetsInsetRect(bounds, (UIEdgeInsets){
             .top = regularHeight
         });
         
@@ -438,6 +439,7 @@
         _largeHeaderSeparatorView.frame = largeHeaderSeparatorRect;
         _largeHeaderContainer.frame = largeHeaderContainerRect;
         
+        const BOOL enabled = (calculatedTitleSize.width * maximumScale <= CGRectGetWidth(largeContentRect));
         const BOOL showsLargeTitle = (enabled) && (CGRectGetHeight(bounds) > regularHeight);
         const BOOL showsHeading = (enabled) && (CGRectGetHeight(bounds) > regularHeight + (interSpacing * 2.0f));
         
@@ -459,8 +461,6 @@
         
         if (self.contentIsBeingScrolled) {
             static const CGFloat maginificationThreshold = 74.0f;
-            static const CGFloat headerScaleDelta = 0.1f;
-            static const CGFloat maximumScale = 1.0f + headerScaleDelta;
             
             CGFloat maginificationDistance = CGRectGetHeight(bounds) - (regularHeight + largeHeaderHeight);
             CGFloat percentage = (maginificationDistance / maginificationThreshold);
