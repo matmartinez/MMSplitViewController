@@ -176,6 +176,12 @@
         for (UIButton *backButton in @[ regularBackButton, compactBackButton ]) {
             [backButton setImage:backButtonImage forState:UIControlStateNormal];
             [backButton addTarget:self action:@selector(_backButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+            
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+            if (@available(iOS 13.4, *)) {
+                backButton.pointerInteractionEnabled = YES;
+            }
+#endif
         }
         
         static const CGFloat chevronTitleSpacing = 6.0f;
