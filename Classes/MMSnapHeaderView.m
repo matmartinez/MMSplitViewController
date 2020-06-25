@@ -170,7 +170,7 @@
             imageName = @"MMSnapBackIndicatorDefault";
         }
         
-        UIImage *backButtonImage = [UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
+        UIImage *backButtonImage = [[UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         backButtonImage.accessibilityLabel = UIKitLocalizedString(@"Back");
         
         for (UIButton *backButton in @[ regularBackButton, compactBackButton ]) {
