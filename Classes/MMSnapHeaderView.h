@@ -43,6 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) BOOL hidesBackButton;
 
 /**
+ *  A Boolean value that determines whether the back button is available.
+ */
+@property (assign, nonatomic) BOOL backActionAvailable;
+
+/**
  *  A Boolean value indicating whether the title should be displayed in a large format.
  */
 @property (assign, nonatomic) BOOL displaysLargeTitle;
