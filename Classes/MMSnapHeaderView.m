@@ -31,6 +31,7 @@
 
 @property (strong, nonatomic) UIButton *regularBackButton;
 @property (strong, nonatomic) UIButton *compactBackButton;
+@property (assign, nonatomic) BOOL backActionAvailable;
 
 @property (readonly, nonatomic) BOOL pagingEnabled;
 @property (assign, nonatomic) BOOL rotatesBackButton;
@@ -230,7 +231,6 @@
 
 - (void)_backButtonTouchUpInside:(id)sender
 {
-    if(!self.backActionAvailable) { return; }
     MMSplitViewController *snapController = self.splitViewController;
     UIViewController *viewController = self.viewController;
     
@@ -684,6 +684,7 @@
 - (void)setHidesBackButton:(BOOL)hidesBackButton
 {
     if (hidesBackButton != self.hidesBackButton) {
+        _hidesBackButton = hidesBackButton;
         [self setNeedsLayout];
     }
 }
