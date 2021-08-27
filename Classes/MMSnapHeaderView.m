@@ -684,6 +684,7 @@
 - (void)setHidesBackButton:(BOOL)hidesBackButton
 {
     if (hidesBackButton != self.hidesBackButton) {
+        _hidesBackButton = hidesBackButton;
         [self setNeedsLayout];
     }
 }
