@@ -53,9 +53,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic, nullable) UIButton *leftButton;
 
 /**
- *  A custom button item displayed on the right edge of the header view.
+ *  A custom view displayed on the right edge of the header view.
+ *  Add a stack view with buttons to have multiple right buttons, for example.
  */
-@property (strong, nonatomic, nullable) UIButton *rightButton;
+@property (strong, nonatomic, nullable) UIView *rightView;
 
 /**
  *  Display attributes for the bar’s title text.

@@ -13,7 +13,7 @@
     struct {
         unsigned int usingMultilineHeading : 1;
         unsigned int usingCustomTitleView : 1;
-        unsigned int showsRightButton : 1;
+        unsigned int showsRightView : 1;
         unsigned int showsLeftButton : 1;
         unsigned int showsBackButton : 1;
         unsigned int usingRegularBackButton : 1;
@@ -271,7 +271,7 @@
     BOOL canToggleVisibility = [self.splitViewController canToggleVisibilityForViewController:self.viewController];
     
     BOOL showsLeftButton = _leftButton != nil;
-    BOOL showsRightButton = _rightButton != nil;
+    BOOL showsRightView = _rightView != nil;
     BOOL showsBackButton = canToggleVisibility && !showsLeftButton && !_hidesBackButton && _backActionAvailable;
     BOOL usesMultilineHeading = _configurationOptions.usingMultilineHeading;
     BOOL usesCustomTitleView = _titleView != nil;
@@ -324,8 +324,8 @@
     if (showsBackButton) {
         if (pagingEnabled) {
             CGFloat rightCompression = 0.0f;
-            if (showsRightButton) {
-                rightCompression = [_rightButton sizeThatFits:fit].width;
+            if (showsRightView) {
+                rightCompression = [_rightView sizeThatFits:fit].width;
             }
             
             CGFloat availableTitleBackWidth = CGRectGetWidth(contentRect) - rightCompression - edgeSpacing;
@@ -352,17 +352,17 @@
         .size = leftButtonSize
     };
     
-    CGSize rightButtonSize = [_rightButton sizeThatFits:fit];
-    CGRect rightButtonRect = (CGRect){
-        .origin.x = CGRectGetMaxX(contentRect) - rightButtonSize.width,
-        .origin.y = ceilf((CGRectGetHeight(contentRect) - rightButtonSize.height) / 2.0f),
-        .size = rightButtonSize
+    CGSize rightViewSize = [_rightView sizeThatFits:fit];
+    CGRect rightViewRect = (CGRect){
+        .origin.x = CGRectGetMaxX(contentRect) - rightViewSize.width,
+        .origin.y = ceilf((CGRectGetHeight(contentRect) - rightViewSize.height) / 2.0f),
+        .size = rightViewSize
     };
     
     // Title.
     CGRect titleAlignmentRect = UIEdgeInsetsInsetRect(contentRect, (UIEdgeInsets){
         .left = leftButtonSize.width + interSpacing,
-        .right = rightButtonSize.width + interSpacing
+        .right = rightViewSize.width + interSpacing
     });
     
     // Align components.
@@ -505,7 +505,7 @@
     actualLeftButton.frame = leftButtonRect;
     [CATransaction commit];
     
-    _rightButton.frame = rightButtonRect;
+    _rightView.frame = rightViewRect;
     _titleLabel.frame = titleLabelRect;
     _subtitleLabel.frame = subtitleLabelRect;
     _titleView.frame = titleViewRect;
@@ -701,14 +701,14 @@
     }
 }
 
-- (void)setRightButton:(UIButton *)rightButton
+- (void)setRightView:(UIView *)rightView
 {
-    if (rightButton != self.rightButton) {
-        [_rightButton removeFromSuperview];
+    if (rightView != self.rightView) {
+        [_rightView removeFromSuperview];
         
-        _rightButton = rightButton;
+        _rightView = rightView;
         
-        [self addSubview:rightButton];
+        [self addSubview:rightView];
         [self setNeedsLayout];
     }
 }

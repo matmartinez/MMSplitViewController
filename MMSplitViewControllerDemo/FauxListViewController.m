@@ -18,6 +18,15 @@
 
 @implementation FauxListViewController
 
+#pragma mark - Overridings.
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self configure];
+}
+
 - (void)didMoveToParentViewController:(UIViewController *)parent
 {
     [super didMoveToParentViewController:parent];
@@ -29,11 +38,7 @@
     }
 }
 
-- (void)setTitle:(NSString *)title
-{
-    [super setTitle:title];
-    [self configure];
-}
+#pragma mark - Setup
 
 - (void)configure
 {
@@ -43,14 +48,74 @@
     }
     
     self.headerView.title = self.title;
+    
+    if (@available(iOS 9.0, *)) {
+        [self setupRightView];
+    }
 }
 
-- (void)viewDidLoad
+- (void)setupRightView API_AVAILABLE(ios(9.0))
 {
-    [super viewDidLoad];
+    // Example View 1
+    UIButton *firstButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [firstButton addTarget:self action:@selector(_firstButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
     
+    // Example View 2
+    UIButton *secondButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [secondButton addTarget:self action:@selector(_secondButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Example Stack View
+    UIStackView *stackView = [[UIStackView alloc] init];
+    
+    stackView.axis = UILayoutConstraintAxisHorizontal;
+    stackView.distribution = UIStackViewDistributionEqualSpacing;
+    stackView.alignment = UIStackViewAlignmentTrailing;
+    stackView.spacing = 10;
+    
+    [stackView addArrangedSubview:firstButton];
+    [stackView addArrangedSubview:secondButton];
+    
+    stackView.translatesAutoresizingMaskIntoConstraints = false;
+    
+    [self.headerView setRightView: stackView];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
     [self configure];
 }
+
+#pragma mark - Actions.
+
+- (void)_firstButtonMethod:(id)sender {
+    [self presentAlertWithTitle:@"First Button Tapped" message:nil];
+}
+
+- (void)_secondButtonMethod:(id)sender {
+    [self presentAlertWithTitle:@"Second Button Tapped" message:nil];
+}
+
+#pragma mark - Methods.
+
+- (void)presentAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message {
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle : title
+                                                                    message : message
+                                                             preferredStyle : UIAlertControllerStyleAlert];
+    
+    UIAlertAction * ok = [UIAlertAction
+                          actionWithTitle:@"OK"
+                          style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action)
+                          { }];
+    
+    [alert addAction:ok];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
+}
+
+#pragma mark - UITableView Delegate and DataSource.
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
