@@ -38,6 +38,7 @@
         UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectZero];
         separatorLineView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.25f];
         separatorLineView.userInteractionEnabled = NO;
+        self.userInteractionEnabled = NO;
         
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
         if (@available(iOS 13.0, *)) {
