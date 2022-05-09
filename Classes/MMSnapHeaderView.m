@@ -71,7 +71,7 @@
         _regularHeight = self.class._UINavigationBarDefaultHeight;
         _largeHeaderHeight = 52.0f;
         _backButtonSpacing = 8.0f;
-        _barButtonSpacing = 16.0f;
+        _barButtonSpacing = 8.0f;
         _interSpacing = 5.0;
         _largeHeaderScaleFactor = 1.0f;
         
@@ -277,7 +277,8 @@
     BOOL usesCustomTitleView = _titleView != nil;
     
     UIEdgeInsets barButtonsInsets = (UIEdgeInsets){
-        .left = (showsBackButton ? backEdgeSpacing : edgeSpacing), .right = edgeSpacing
+        .left = (showsBackButton ? backEdgeSpacing : edgeSpacing),
+        .right = edgeSpacing
     };
     
     UIEdgeInsets contentInset = UIEdgeInsetsZero;
@@ -800,7 +801,7 @@
 - (BOOL)displaysLargeTitleWithSize:(CGSize)size
 {
     if (self.displaysLargeTitle) {
-        const CGFloat spacing = _barButtonSpacing;
+        const CGFloat spacing = [self.class _UINavigationBarDoubleEdgesRequired] ? [self.class _UINavigationBarDoubleEdgesSpacing] :  _barButtonSpacing;
         const CGFloat allowedWidth = size.width - (spacing * 2.0f);
         
         if (_largeTitleSize.width > allowedWidth) {
