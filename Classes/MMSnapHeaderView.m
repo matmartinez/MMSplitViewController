@@ -71,7 +71,7 @@
         _regularHeight = self.class._UINavigationBarDefaultHeight;
         _largeHeaderHeight = 52.0f;
         _backButtonSpacing = 8.0f;
-        _barButtonSpacing = 8.0f;
+        _barButtonSpacing = 16.0f;
         _interSpacing = 5.0;
         _largeHeaderScaleFactor = 1.0f;
         
