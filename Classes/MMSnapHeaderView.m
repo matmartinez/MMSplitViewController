@@ -56,6 +56,9 @@
 
 @implementation MMSnapHeaderView
 
+static const CGFloat headerScaleDelta = 0.1f;
+static const CGFloat maximumScale = 1.0f + headerScaleDelta;
+
 #define UIKitLocalizedString(key) [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] localizedStringForKey:key value:@"" table:nil]
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) \
@@ -414,9 +417,6 @@
     
     // Large heading.
     if ([self.class _UINavigationBarUsesLargeTitles]) {
-        static const CGFloat headerScaleDelta = 0.1f;
-        static const CGFloat maximumScale = 1.0f + headerScaleDelta;
-        
         CGRect largeContentRect = UIEdgeInsetsInsetRect(bounds, (UIEdgeInsets){ .left = edgeSpacing, .right = edgeSpacing });
         
         const CGFloat regularHeight = _regularHeight;
@@ -804,7 +804,7 @@
         const CGFloat spacing = [self.class _UINavigationBarDoubleEdgesRequired] ? [self.class _UINavigationBarDoubleEdgesSpacing] :  _barButtonSpacing;
         const CGFloat allowedWidth = size.width - (spacing * 2.0f);
         
-        if (_largeTitleSize.width > allowedWidth) {
+        if ((_largeTitleSize.width * maximumScale) > allowedWidth) {
             return NO;
         }
         
